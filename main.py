@@ -34,7 +34,7 @@ m1_2023 = df_2023['bleaching_num'].mean()
 
 sns.barplot(x=['2015','2023'], y=[m1_2015, m1_2023], palette='coolwarm')
 plt.title('Gravidade Média de Branqueamento (2015 vs 2023)')
-plt.ylabel('Severity (0=None,3=High)')
+plt.ylabel('Severity')
 plt.show()
 
 # 2 - Qual a diferença da biodiversidade marinha entre 2015 e 2023?
