@@ -32,7 +32,7 @@ m1_2023 = df_2023['bleaching_num'].mean()
 
 # !!!! Qual o tempo em que isso ocorre?
 
-sns.barplot(x=['2015','2023'], y=[m1_2015, m1_2023], palette='coolwarm')
+sns.barplot(x=['2015','2023'], y=[m1_2015, m1_2023], palette='inferno')
 plt.title('Gravidade Média de Branqueamento (2015 vs 2023)')
 plt.ylabel('Severity')
 plt.show()
