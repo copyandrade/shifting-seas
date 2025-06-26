@@ -1,11 +1,12 @@
-# -*- coding: utf-8 -*-
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-df = pd.read_csv('realistic_ocean_climate_dataset.csv', encoding='ISO-8859-1')
+df = pd.read_csv('realistic_ocean_climate_dataset.csv',  encoding='latin1') 
+
 print(df.columns)
 df.head()
+print(df['Location'].unique())
 
 df.rename(columns={
     'Date':'date',
@@ -66,6 +67,7 @@ plt.show()
 
 # 5 - Em quais locais são encontrados as maiores temperaturas e qual a média de cada lugar? 
 top = df.groupby('region')['sst'].mean().sort_values(ascending=False).head(10)
+top.index = ['Galápagos' if x == 'GalÃ¡pagos' else x for x in top.index]
 top.plot(kind='bar', color='orange')
 plt.title('Top 10 Hottest Locations (Average SST)')
 plt.ylabel('SST (°C)')
