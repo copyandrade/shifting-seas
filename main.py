@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -33,7 +34,7 @@ m1_2023 = df_2023['bleaching_num'].mean()
 # !!!! Qual o tempo em que isso ocorre?
 
 sns.barplot(x=['2015','2023'], y=[m1_2015, m1_2023], palette='inferno')
-plt.title('Gravidade Média de Branqueamento (2015 vs 2023)')
+plt.title('Average Bleaching Severity (2015 vs 2023)')
 plt.ylabel('Severity')
 plt.show()
 
@@ -41,14 +42,14 @@ plt.show()
 b_2015 = df_2015['biodiversity'].mean()
 b_2023 = df_2023['biodiversity'].mean()
 sns.barplot(x=['2015','2023'], y=[b_2015, b_2023], palette='viridis')
-plt.title('Média de Espécies Observadas')
-plt.ylabel('Número de Espécies')
+plt.title('Average of Observed Species')
+plt.ylabel('Number of Species')
 plt.ylim(50, 130)
 plt.show()
 
 # 3 - Qual a diferença de acidificação do oceano entre 2015 e 2023 devido à diferença de temperatura?
 corr = df[['sst','ph']].corr().loc['sst','ph']
-print('Correlação SST x pH:', corr)
+print('Correlation SST x pH:', corr)
 
 sns.scatterplot(data=df, x='sst', y='ph', hue='year', alpha=0.6, palette='Spectral')
 plt.title('SST vs pH (2015–2023)')
@@ -58,7 +59,7 @@ plt.show()
 t_2015 = df_2015['sst'].mean()
 t_2023 = df_2023['sst'].mean()
 sns.barplot(x=['2015','2023'], y=[t_2015, t_2023], palette='magma')
-plt.title('Temperatura Média da Superfície do Mar')
+plt.title('Average Sea Surface Temperature')
 plt.ylabel('SST (°C)')
 plt.ylim(25, 29)
 plt.show()
@@ -66,9 +67,9 @@ plt.show()
 # 5 - Em quais locais são encontrados as maiores temperaturas e qual a média de cada lugar? 
 top = df.groupby('region')['sst'].mean().sort_values(ascending=False).head(10)
 top.plot(kind='bar', color='orange')
-plt.title('Top 10 Regiões mais Quentes (SST médio)')
+plt.title('Top 10 Hottest Locations (Average SST)')
 plt.ylabel('SST (°C)')
-plt.xlabel('Região')
+plt.xlabel('Location')
 plt.xticks(rotation=45)
 plt.ylim(28, 29)
 plt.tight_layout()
