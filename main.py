@@ -4,10 +4,6 @@ import seaborn as sns
 
 df = pd.read_csv('realistic_ocean_climate_dataset.csv',  encoding='latin1') 
 
-print(df.columns)
-df.head()
-print(df['Location'].unique())
-
 df.rename(columns={
     'Date':'date',
     'Location':'region',
@@ -21,8 +17,7 @@ df.rename(columns={
 df['date'] = pd.to_datetime(df['date'])
 df['year'] = df['date'].dt.year
 
-# 1 - Qual a diferença do branqueamento de 2015 e 2023 de corais? Qual o tempo em que isso ocorre?
-# Bleaching Severity 
+# 1 - Qual a diferença do branqueamento de 2015 e 2023 de corais?
 severity_map = {'None': 0, 'Low': 1, 'Medium': 2, 'High': 3}
 df['bleaching_num'] = df['bleaching'].map(severity_map)
 
@@ -31,8 +26,6 @@ df_2023 = df[df['year'] == 2023]
 
 m1_2015 = df_2015['bleaching_num'].mean()
 m1_2023 = df_2023['bleaching_num'].mean()
-
-# !!!! Qual o tempo em que isso ocorre?
 
 sns.barplot(x=['2015','2023'], y=[m1_2015, m1_2023], palette='inferno')
 plt.title('Average Bleaching Severity (2015 vs 2023)')
