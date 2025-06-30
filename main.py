@@ -17,7 +17,7 @@ df.rename(columns={
 df['date'] = pd.to_datetime(df['date'])
 df['year'] = df['date'].dt.year
 
-# 1 - Qual a diferença do branqueamento de 2015 e 2023 de corais?
+# 1 - Qual a diferença do branqueamento de 2015 e 2023 de corais? 
 severity_map = {'None': 0, 'Low': 1, 'Medium': 2, 'High': 3}
 df['bleaching_num'] = df['bleaching'].map(severity_map)
 
@@ -60,7 +60,7 @@ plt.show()
 
 # 5 - Em quais locais são encontrados as maiores temperaturas e qual a média de cada lugar? 
 top = df.groupby('region')['sst'].mean().sort_values(ascending=False).head(10)
-top.index = ['Galápagos' if x == 'GalÃ¡pagos' else x for x in top.index]
+top.index = ['Galapagos' if x == 'GalÃ¡pagos' else x for x in top.index]
 top.plot(kind='bar', color='orange')
 plt.title('Top 10 Hottest Locations (Average SST)')
 plt.ylabel('SST (°C)')
